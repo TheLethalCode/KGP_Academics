@@ -1,0 +1,1 @@
+Write a C/C++ program to generate n random points, find the closest pair in O(nlogn) time, and draw discs of same radius centred at these points so that the discs at the closest pair just touch each other. The output should be an SVG file.

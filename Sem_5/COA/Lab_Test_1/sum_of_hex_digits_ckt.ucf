@@ -1,0 +1,48 @@
+## This file is a general .ucf for the Nexys4 DDR Rev C board
+## To use it in a project:
+## - uncomment the lines corresponding to used pins
+## - rename the used signals according to the project
+
+## Clock signal
+#NET "clk100mhz"   LOC = "E3"	| IOSTANDARD = "LVCMOS33";					#Bank = 35, Pin name = #IO_L12P_T1_MRCC_35,					Sch name = clk100mhz
+#NET "clk100mhz" TNM_NET = sys_clk_pin;
+#TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 100 MHz HIGH 50%; 
+
+
+## Switches
+#NET "sw<0>"          LOC=J15 | IOSTANDARD=LVCMOS33; #IO_L24N_T3_RS0_15
+#NET "sw<1>"          LOC=L16 | IOSTANDARD=LVCMOS33; #IO_L3N_T0_DQS_EMCCLK_14
+#NET "sw<2>"          LOC=M13 | IOSTANDARD=LVCMOS33; #IO_L6N_T0_D08_VREF_14
+#NET "sw<3>"          LOC=R15 | IOSTANDARD=LVCMOS33; #IO_L13N_T2_MRCC_14
+#NET "sw<4>"          LOC=R17 | IOSTANDARD=LVCMOS33; #IO_L12N_T1_MRCC_14
+#NET "sw<5>"          LOC=T18 | IOSTANDARD=LVCMOS33; #IO_L7N_T1_D10_14
+#NET "sw<6>"          LOC=U18 | IOSTANDARD=LVCMOS33; #IO_L17N_T2_A13_D29_14
+#NET "sw<7>"          LOC=R13 | IOSTANDARD=LVCMOS33; #IO_L5N_T0_D07_14
+#NET "sw<8>"          LOC=T8 | IOSTANDARD=LVCMOS18; #IO_L24N_T3_34
+#NET "sw<9>"          LOC=U8 | IOSTANDARD=LVCMOS18; #IO_25_34
+#NET "sw<10>"         LOC=R16 | IOSTANDARD=LVCMOS33; #IO_L15P_T2_DQS_RDWR_B_14
+#NET "sw<11>"         LOC=T13 | IOSTANDARD=LVCMOS33; #IO_L23P_T3_A03_D19_14
+#NET "sw<12>"         LOC=H6 | IOSTANDARD=LVCMOS33; #IO_L24P_T3_35
+#NET "sw<13>"         LOC=U12 | IOSTANDARD=LVCMOS33; #IO_L20P_T3_A08_D24_14
+#NET "sw<14>"         LOC=U11 | IOSTANDARD=LVCMOS33; #IO_L19N_T3_A09_D25_VREF_14
+#NET "sw<15>"         LOC=V10 | IOSTANDARD=LVCMOS33; #IO_L21P_T3_DQS_14
+
+
+## Buttons
+#NET "cpu_resetn"     LOC=C12 | IOSTANDARD=LVCMOS33; #IO_L3P_T0_DQS_AD1P_15
+
+#NET "btnc"           LOC=N17 | IOSTANDARD=LVCMOS33; #IO_L9P_T1_DQS_14
+#NET "btnd"           LOC=P18 | IOSTANDARD=LVCMOS33; #IO_L9N_T1_DQS_D13_14
+#NET "btnl"           LOC=P17 | IOSTANDARD=LVCMOS33; #IO_L12P_T1_MRCC_14
+#NET "btnr"           LOC=M17 | IOSTANDARD=LVCMOS33; #IO_L10N_T1_D15_14
+#NET "btnu"           LOC=M18 | IOSTANDARD=LVCMOS33; #IO_L4N_T0_D05_14
+
+
+## LEDs
+NET "sum_of_hex_digits[0]"         LOC=H17 | IOSTANDARD=LVCMOS33; #IO_L18P_T2_A24_15
+NET "sum_of_hex_digits[1]"         LOC=K15 | IOSTANDARD=LVCMOS33; #IO_L24P_T3_RS1_15
+NET "sum_of_hex_digits[2]"         LOC=J13 | IOSTANDARD=LVCMOS33; #IO_L17N_T2_A25_15
+NET "sum_of_hex_digits[3]"         LOC=N14 | IOSTANDARD=LVCMOS33; #IO_L8P_T1_D11_14
+NET "sum_of_hex_digits[4]"         LOC=R18 | IOSTANDARD=LVCMOS33; #IO_L7P_T1_D09_14
+NET "sum_of_hex_digits[5]"         LOC=V17 | IOSTANDARD=LVCMOS33; #IO_L18N_T2_A11_D27_14
+NET "sum_of_hex_digits[6]"         LOC=U17 | IOSTANDARD=LVCMOS33; #IO_L17P_T2_A14_D30_14
