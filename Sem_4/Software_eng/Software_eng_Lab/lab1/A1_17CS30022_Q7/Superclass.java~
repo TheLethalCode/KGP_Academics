@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+class Data
+{
+    int data1,data2;
+    Data()
+    {
+        data1=1;
+        data2=2;
+    }
+}
+
+class NewData extends Data
+{
+    int data3,data4;
+    NewData()
+    {
+        data3=3;
+        data4=4;
+    }
+}
+
+public class Superclass
+{   
+    public static void main(String args[])
+    {
+        Data trys = new NewData();
+        System.out.println(trys.data3);
+    }
+}

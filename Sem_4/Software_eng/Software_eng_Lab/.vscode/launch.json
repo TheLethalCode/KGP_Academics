@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ViewAnimals",
+            "request": "launch",
+            "mainClass": "ViewAnimals"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BoxPolymorf",
+            "request": "launch",
+            "mainClass": "BoxPolymorf"
+        }
+    ]
+}
