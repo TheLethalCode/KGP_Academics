@@ -1,0 +1,132 @@
+"$$syntax error
+===================================================================================================================
+Symbol Table: Global                                                             Parent: null
+----------------------------------------------------------------------------------------------------
+Name                Type                     Initial Value       Size        Offset      Nested
+----------------------------------------------------------------------------------------------------
+main                integer                                   4           0          main
+-------------------------------------------------------------------------------------------------------------------
+
+===================================================================================================================
+Symbol Table: main                                                               Parent: Global
+----------------------------------------------------------------------------------------------------
+Name                Type                     Initial Value       Size        Offset      Nested
+----------------------------------------------------------------------------------------------------
+return              integer                                   4           0          null
+filehandle          integer                  0                4           4          null
+t00                 integer                  0                4           8          null
+filename            char                     'c'              1           12         null
+t01                 char                     'c'              1           13         null
+count               integer                                   4           14         null
+printf              integer                                   4           18         null
+t02                 ptr(char)                "enter name\n"   4           22         null
+t03                 integer                                   4           26         null
+gets                integer                                   4           30         null
+t04                 integer                                   4           34         null
+t05                 ptr(char)                "Now counter.\n" 4           38         null
+t06                 integer                                   4           42         null
+countername         integer                                   4           46         null
+t07                 integer                                   4           50         null
+t08                 ptr(char)                "Please count.\n"4           54         null
+t09                 integer                                   4           58         null
+scanf               integer                                   4           62         null
+t10                 ptr(char)                "%d"             4           66         null
+t11                 ptr(integer)                              4           70         null
+t12                 integer                                   4           74         null
+creat               integer                                   4           78         null
+S_IREAD             integer                                   4           82         null
+S_IWRITE            integer                                   4           86         null
+t13                 integer                                   4           90         null
+t14                 integer                                   4           94         null
+t15                 integer                                   4           98         null
+globalInt           integer                                   4           102        null
+t16                 integer                  0                4           106        null
+fprintf             integer                                   4           110        null
+fp                  integer                                   4           114        null
+t17                 ptr(char)                "%d"             4           118        null
+t18                 integer                                   4           122        null
+fclose              integer                                   4           126        null
+t19                 integer                                   4           130        null
+t20                 ptr(char)                "cannot open %s "4           134        null
+t21                 integer                                   4           138        null
+t22                 integer                                   4           142        null
+t23                 integer                                   4           146        null
+t24                 integer                                   4           150        null
+globalFloat         integer                                   4           154        null
+t25                 integer                  0                4           158        null
+t26                 ptr(char)                "<?php\n"        4           162        null
+t27                 integer                                   4           166        null
+t28                 ptr(char)                "$counterFile = \"%s\";\n"4           170        null
+t29                 integer                                   4           174        null
+line                integer                                   4           178        null
+file                integer                                   4           182        null
+counterFile         integer                                   4           186        null
+t30                 integer                                   4           190        null
+t31                 integer                                   4           194        null
+-------------------------------------------------------------------------------------------------------------------
+
+==============================
+Quad Translation
+------------------------------
+
+main: 
+
+	1   :	t00 = 0
+	2   :	filehandle = t00
+	3   :	t01 = 'c'
+	4   :	filename = t01
+	5   :	param t02
+	6   :	t03 = call printf, 1
+	7   :	param filename
+	8   :	t04 = call gets, 1
+	9   :	param t05
+	10  :	t06 = call printf, 1
+	11  :	param countername
+	12  :	t07 = call gets, 1
+	13  :	param t08
+	14  :	t09 = call printf, 1
+	15  :	param t10
+	16  :	t11 = & count
+	17  :	param t11
+	18  :	t12 = call scanf, 2
+	19  :	param countername
+	20  :	t13 = S_IREAD | S_IWRITE
+	21  :	param t13
+	22  :	t14 = call creat, 2
+	23  :	filehandle = t14
+	24  :	t16 = 0
+	25  :	if globalInt == t16 goto 28
+	26  :	goto 35
+	27  :	goto 38
+	28  :	param fp
+	29  :	param t17
+	30  :	param count
+	31  :	t18 = call fprintf, 3
+	32  :	param fp
+	33  :	t19 = call fclose, 1
+	34  :	goto 38
+	35  :	param t20
+	36  :	param countername
+	37  :	t21 = call printf, 2
+	38  :	param filename
+	39  :	t22 = S_IREAD | S_IWRITE
+	40  :	param t22
+	41  :	t23 = call creat, 2
+	42  :	filehandle = t23
+	43  :	t25 = 0
+	44  :	if globalFloat == t25 goto 
+	45  :	goto 
+	46  :	goto 
+	47  :	param fp
+	48  :	param t26
+	49  :	t27 = call fprintf, 2
+	50  :	param fp
+	51  :	param t28
+	52  :	param countername
+	53  :	t29 = call fprintf, 3
+	54  :	param fp
+	55  :	param counterFile
+	56  :	t30 = call file, 1
+	57  :	line = t30
+	58  :	param t30
+==============================

@@ -1,0 +1,155 @@
+===================================================================================================================
+Symbol Table: Global                                                             Parent: null
+----------------------------------------------------------------------------------------------------
+Name                Type                     Initial Value       Size        Offset      Nested
+----------------------------------------------------------------------------------------------------
+test                integer                  3                4           0          null
+t00                 integer                  3                4           4          null
+add                 integer                                   4           8          add
+main                void                                      0           12         main
+-------------------------------------------------------------------------------------------------------------------
+
+===================================================================================================================
+Symbol Table: add                                                                Parent: Global
+----------------------------------------------------------------------------------------------------
+Name                Type                     Initial Value       Size        Offset      Nested
+----------------------------------------------------------------------------------------------------
+a                   integer                                   4           0          null
+b                   integer                                   4           4          null
+return              integer                                   4           8          null
+t00                 integer                  10               4           12         null
+t01                 integer                                   4           16         null
+x                   ptr(integer)                              4           20         null
+y                   integer                                   4           24         null
+t02                 ptr(integer)                              4           28         null
+t03                 ptr(null)                                 4           32         null
+t04                 integer                                   4           36         null
+t05                 integer                                   4           40         null
+t06                 integer                                   4           44         null
+-------------------------------------------------------------------------------------------------------------------
+
+===================================================================================================================
+Symbol Table: main                                                               Parent: Global
+----------------------------------------------------------------------------------------------------
+Name                Type                     Initial Value       Size        Offset      Nested
+----------------------------------------------------------------------------------------------------
+i                   integer                                   4           0          null
+a                   arr(10, integer)                          40          4          null
+t00                 integer                  10               4           44         null
+v                   integer                  5                4           48         null
+t01                 integer                  5                4           52         null
+d                   double                                    8           56         null
+g                   ptr(char)                                 4           64         null
+NULL                integer                                   4           68         null
+testChar            arr(152, char)                            152         72         null
+t02                 integer                  152              4           224        null
+tst                 char                     's';
+
+
+	tst='t';
+	tst='u'1           228        null
+t03                 char                     's';
+
+
+	tst='t';
+	tst='u'1           229        null
+t04                 integer                  0                4           230        null
+t05                 integer                                   4           234        null
+t06                 integer                                   4           238        null
+t07                 char                                      1           242        null
+t08                 integer                  1                4           243        null
+t09                 integer                                   4           247        null
+t10                 integer                  10               4           251        null
+t11                 integer                                   4           255        null
+t12                 integer                                   4           259        null
+t13                 integer                                   4           263        null
+t14                 integer                                   4           267        null
+t15                 integer                  1                4           271        null
+t16                 integer                                   4           275        null
+t17                 integer                                   4           279        null
+t18                 integer                                   4           283        null
+t19                 integer                                   4           287        null
+t20                 integer                  2                4           291        null
+t21                 integer                                   4           295        null
+t22                 integer                  1                4           299        null
+t23                 integer                                   4           303        null
+t24                 integer                                   4           307        null
+t25                 integer                                   4           311        null
+t26                 integer                                   4           315        null
+-------------------------------------------------------------------------------------------------------------------
+
+==============================
+Quad Translation
+------------------------------
+	0   :	t00 = 3
+	1   :	test = t00
+
+add: 
+
+	3   :	t00 = 10
+	4   :	a = t00
+	5   :	t02 = & y
+	6   :	x = t02
+	7   :	t04 = * x
+	8   :	*x = y
+	9   :	t05 = * x
+	10  :	y = t05
+
+main: 
+
+	12  :	t00 = 10
+	13  :	t01 = 5
+	14  :	v = t01
+	15  :	g = NULL
+	16  :	t02 = 152
+	17  :	t03 = 's';
+
+
+	tst='t';
+	tst='u'
+	18  :	tst = t03
+	19  :	t04 = 0
+	20  :	t05 = t04 * 1
+	21  :	t06 = testChar[t05]
+	22  :	t07 = int2char(t06)
+	23  :	tst = t07
+	24  :	t08 = 1
+	25  :	i = t08
+	26  :	t10 = 10
+	27  :	t11 = t10 * 4
+	28  :	t12 = a[t11]
+	29  :	if i < t12 goto 34
+	30  :	goto 37
+	31  :	t13 = i
+	32  :	i = i + 1
+	33  :	goto 26
+	34  :	t14 = i
+	35  :	i = i + 1
+	36  :	goto 31
+	37  :	t15 = 1
+	38  :	t16 = i - t15
+	39  :	i = t16
+	40  :	t18 = i * 4
+	41  :	t19 = a[t18]
+	42  :	if t19 < v goto 37
+	43  :	goto 44
+	44  :	t20 = 2
+	45  :	i = t20
+	46  :	goto 49
+	47  :	if v == 0 goto 55
+	48  :	goto 52
+	49  :	if i == 0 goto 55
+	50  :	goto 47
+	51  :	goto 55
+	52  :	t22 = 1
+	53  :	i = t22
+	54  :	goto 55
+	55  :	t24 = i * 4
+	56  :	t25 = a[t24]
+	57  :	if v > t25 goto 59
+	58  :	goto 62
+	59  :	t26 = i
+	60  :	i = i - 1
+	61  :	goto 55
+	62  :	ret 
+==============================

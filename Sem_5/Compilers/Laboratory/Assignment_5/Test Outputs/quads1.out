@@ -1,0 +1,154 @@
+===================================================================================================================
+Symbol Table: Global                                                             Parent: null
+----------------------------------------------------------------------------------------------------
+Name                Type                     Initial Value       Size        Offset      Nested
+----------------------------------------------------------------------------------------------------
+print_arr           void                                      0           0          print_arr
+count_passes        integer                                   4           0          count_passes
+main                integer                                   4           4          main
+-------------------------------------------------------------------------------------------------------------------
+
+===================================================================================================================
+Symbol Table: print_arr                                                          Parent: Global
+----------------------------------------------------------------------------------------------------
+Name                Type                     Initial Value       Size        Offset      Nested
+----------------------------------------------------------------------------------------------------
+grades              integer                                   4           0          null
+elements            integer                                   4           4          null
+printf              integer                                   4           8          null
+t00                 ptr(char)                "%d "            4           12         null
+t01                 integer                                   4           16         null
+t02                 ptr(char)                "\n"             4           20         null
+t03                 integer                                   4           24         null
+-------------------------------------------------------------------------------------------------------------------
+
+===================================================================================================================
+Symbol Table: count_passes                                                       Parent: Global
+----------------------------------------------------------------------------------------------------
+Name                Type                     Initial Value       Size        Offset      Nested
+----------------------------------------------------------------------------------------------------
+grades              integer                                   4           0          null
+elements            integer                                   4           4          null
+value               integer                                   4           8          null
+return              integer                                   4           12         null
+i                   integer                  2                4           16         null
+t00                 integer                  2                4           20         null
+passes              integer                  0                4           24         null
+t01                 integer                  0                4           28         null
+a                   char                     'a', b='b', c='c'1           32         null
+t02                 char                     'a', b='b', c='c'1           33         null
+arr                 arr(10, integer)                          40          34         null
+t03                 integer                  10               4           74         null
+t04                 integer                  1                4           78         null
+t05                 integer                                   4           82         null
+t06                 integer                                   4           86         null
+t07                 integer                  15               4           90         null
+t08                 integer                                   4           94         null
+x                   double                   2.3              8           98         null
+t09                 double                   2.3              8           106        null
+t10                 integer                                   4           114        null
+t11                 integer                                   4           118        null
+t12                 integer                                   4           122        null
+t13                 integer                                   4           126        null
+-------------------------------------------------------------------------------------------------------------------
+
+===================================================================================================================
+Symbol Table: main                                                               Parent: Global
+----------------------------------------------------------------------------------------------------
+Name                Type                     Initial Value       Size        Offset      Nested
+----------------------------------------------------------------------------------------------------
+return              integer                                   4           0          null
+grades              integer                  10               4           4          null
+t00                 integer                  10               4           8          null
+result              integer                                   4           12         null
+print_arr           integer                                   4           16         null
+t01                 integer                  10               4           20         null
+t02                 integer                                   4           24         null
+count_passes        integer                                   4           28         null
+t03                 integer                  10               4           32         null
+t04                 integer                  70               4           36         null
+t05                 integer                                   4           40         null
+t06                 integer                                   4           44         null
+t07                 integer                  1                4           48         null
+printf              integer                                   4           52         null
+t08                 ptr(char)                "There was %d pass.\n"4           56         null
+t09                 integer                                   4           60         null
+t10                 ptr(char)                "There were %d passes.\n"4           64         null
+t11                 integer                                   4           68         null
+t12                 integer                  0                4           72         null
+-------------------------------------------------------------------------------------------------------------------
+
+==============================
+Quad Translation
+------------------------------
+
+main: 
+
+	1   :	t00 = 10
+	2   :	grades = t00
+	3   :	param grades
+	4   :	t01 = 10
+	5   :	param t01
+	6   :	t02 = call print_arr, 2
+	7   :	param grades
+	8   :	t03 = 10
+	9   :	param t03
+	10  :	t04 = 70
+	11  :	param t04
+	12  :	t05 = call count_passes, 3
+	13  :	result = t05
+	14  :	t07 = 1
+	15  :	if result == t07 goto 18
+	16  :	goto 22
+	17  :	goto 25
+	18  :	param t08
+	19  :	param result
+	20  :	t09 = call printf, 2
+	21  :	goto 25
+	22  :	param t10
+	23  :	param result
+	24  :	t11 = call printf, 2
+	25  :	t12 = 0
+	26  :	ret t12
+
+print_arr: 
+
+
+print_arr: 
+
+	29  :	param t00
+	30  :	param grades
+	31  :	t01 = call printf, 2
+	32  :	param t02
+	33  :	t03 = call printf, 1
+
+count_passes: 
+
+
+count_passes: 
+
+	36  :	t00 = 2
+	37  :	i = t00
+	38  :	t01 = 0
+	39  :	passes = t01
+	40  :	t02 = 'a'
+	41  :	a = t02
+	42  :	t03 = 10
+	43  :	t04 = 1
+	44  :	t05 = passes + t04
+	45  :	t06 = t05 * 4
+	46  :	t07 = 15
+	47  :	arr[t06] = t07
+	48  :	t09 = 2.3
+	49  :	x = t09
+	50  :	t10 = double2int(x)
+	51  :	t11 = t10 + i
+	52  :	passes = t11
+	53  :	if grades >= value goto 56
+	54  :	goto 59
+	55  :	goto 59
+	56  :	t13 = passes
+	57  :	passes = passes + 1
+	58  :	goto 59
+	59  :	ret passes
+==============================
