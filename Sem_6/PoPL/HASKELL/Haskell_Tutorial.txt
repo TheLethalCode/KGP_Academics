@@ -1,0 +1,403 @@
+Haskell Tutorials:
+sudo add-apt-repository ppa:hvr/ghc
+sudo apt-get update
+sudo apt-get install ghc-8.0.2
+or
+sudo apt-get install ghc
+
+
+
+
+ghc -o fac fac.hs
+
+ ghc -o hello hello.hs
+:set prompt "ghci> "
+----------------------------------------------------------
+
+Simple Arithmetics:
+parenthesis rule obeyed:
+
+
+75+90
+50 * (100 - 4999) 
+
+Negative of numbers
+
+5 * (-3)  not 5 * -3
+
+
+Boolean Algebra
+True && False 
+False || True 
+not (True && True) 
+
+Testing for equality done among comaptible types
+What about doing 5 + "llama" or 5 == True?	
+ghci> "hello" == "hello"   	
+
+------------------------------------------------------------
+
+Functions:
+
+In Haskell, functions are called by writing the function name, a space and then the parameters, separated by spaces. 	
+ghci> max 100 101 
+ghci> succ 8  
+ghci> (succ 9) + (max 5 4) + 1  
+
+Understanding bar (bar 3)
+
+-----------------------------------------------------------
+
+Lets do some function examples:
+
+doubleMe x = x + x 
+save it as func.hs
+
+ghci> :l haskell_programs/func
+
+doubleUs x y = doubleMe x + doubleMe y   redefining functions in terms of basic functions
+
+
+if-then-else construct
+
+
+doubleSmallNumber x = if x > 100  
+                        then x  
+                        else x*2
+
+
+
+------------------------------------------------------------------------------------------------------
+Intro to Lists:
+
+
+In Haskell, lists are a homogenous data structure.
+
+We can use the let keyword to define a name right in GHCI. 
+ghci> let lostNumbers = [4,8,15,16,23,42]  
+ghci> lostNumbers  
+[4,8,15,16,23,42]
+
+ghci> [1,2,3,4] ++ [9,10,11,12]  
+[1,2,3,4,9,10,11,12]  
+ghci> "hello" ++ " " ++ "world"  
+"hello world"  
+ghci> ['w','o'] ++ ['o','t']  
+"woot" 
+
+
+List Comparison
+
+
+ghci> [3,2,1] > [2,1,0]  
+True  
+ghci> [3,2,1] > [2,10,100]  
+True  
+ghci> [3,4,2] > [3,4]  
+True  
+ghci> [3,4,2] > [2,4]  
+True  
+ghci> [3,4,2] == [3,4,2]  
+True 
+
+List within Lists
+
+
+ghci> let b = [[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3]]  
+ghci> b  
+[[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3]]  
+ghci> b ++ [[1,1,1,1]]  
+[[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3],[1,1,1,1]]  
+ghci> [6,6,6]:b  
+[[6,6,6],[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3]]  
+ghci> b !! 2  
+[1,2,2,3,4]
+
+
+
+ghci> head [5,4,3,2,1]  
+    5 
+ghci> tail [5,4,3,2,1]  
+[4,3,2,1]  
+ghci> last [5,4,3,2,1]  
+1  
+ghci> init [5,4,3,2,1]  
+[5,4,3,2]  
+ghci> take 3 [5,4,3,2,1]  
+[5,4,3]   
+
+
+Texas ranges
+
+ghci> [1..20]  
+[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]  
+ghci> ['a'..'z']  
+"abcdefghijklmnopqrstuvwxyz" 
+
+
+Cycle
+
+
+ghci> take 10 (cycle [1,2,3])  
+[1,2,3,1,2,3,1,2,3,1] 
+
+Some List operations:
+
+    ghci> [x*2 | x <- [1..10], x*2 >= 12]  
+    [12,14,16,18,20]  
+
+    ghci> [ x | x <- [10..20], x /= 13, x /= 15, x /= 19]  
+    [10,11,12,14,16,17,18,20]
+
+------------------------------------------------------------------------------------------------------
+Tuples:
+
+[[1,2],[8,11],[4,5]].  and [[1,2],[8,11,5],[4,5]] both allowed but not [(1,2),(8,11,5),(4,5)]
+
+("Christopher", "Walken", 55)
+
+ghci> let mhc = (('a', 50),('g', 40))
+
+----------------------------------------------------------------------------------------------------------
+TYPES and CLASSES:
+
+
+ghci> :t 'a'  
+'a' :: Char  
+ghci> :t True  
+True :: Bool  
+ghci> :t "HELLO!"  
+"HELLO!" :: [Char]  
+ghci> :t (True, 'a')  
+(True, 'a') :: (Bool, Char)  
+ghci> :t 4 == 5  
+4 == 5 :: Bool 
+
+
+Types of functions
+
+    addThree :: Int -> Int -> Int -> Int  
+    addThree x y z = x + y + z  
+
+    factorial :: Integer -> Integer  
+    factorial n = product [1..n]  
+
+
+
+Type variables
+
+
+ghci> :t head  
+head :: [a] -> a // Functions that have type variables are called polymorphic functions. 
+
+Type Classes
+
+    ghci> :t (==)  
+    (==) :: (Eq a) => a -> a -> Bool  
+
+
+
+    ghci> :t (>)  
+    (>) :: (Ord a) => a -> a -> Bool  
+
+-----------------------------------------------------------------------------------------------------
+Let bindings and functions
+
+
+
+cylinder :: (RealFloat a) => a -> a -> a  
+cylinder r h = 
+    let sideArea = 2 * pi * r * h  
+        topArea = pi * r ^2  
+    in  sideArea + 2 * topArea 
+
+
+Finding Type :
+
+ghci> :info cyliner
+ghci> :info addThree
+
+
+// Case statements whould ave the same return types
+
+describeList :: [a] -> String  
+describeList xs = "The list is " ++ case xs of [] -> "empty."  
+                                               [x] -> "a singleton list."   
+                                               xs -> "a longer list."
+
+
+
+
+error if string is 2
+
+haskell_programs/func.hs:13:54:
+    No instance for (Num [Char]) arising from the literal ‘2’
+    In the expression: 2
+    In a case alternative: xs -> 2
+    In the second argument of ‘(++)’, namely
+      ‘case xs of {
+         [] -> "empty."
+         [x] -> "a singleton list."
+         xs -> 2 }’
+Failed, modules loaded: none.
+
+-----------------------------------------------------------------------------------------------
+
+Recursion:
+
+    maximum' :: (Ord a) => [a] -> a  
+    maximum' [] = error "maximum of empty list"  
+    maximum' [x] = x  
+    maximum' (x:xs) = max x (maximum' xs)  
+
+    replicate' :: (Num i, Ord i) => i -> a -> [a]  
+    replicate' n x  
+        | n <= 0    = []  
+        | otherwise = x:replicate' (n-1) x  
+
+
+---------------------------------------------------------------------------------------------------
+
+Curried Functions:
+
+functions with multiple arguments
+
+equivalent calls
+
+    ghci> max 4 5  
+    5  
+    ghci> (max 4) 5  
+    5  
+
+Maps and Filters
+
+map :: (a -> b) -> [a] -> [b]  
+map _ [] = []  
+map f (x:xs) = f x : map f xs 
+
+
+ghci> map (+3) [1,5,3,1,6]  
+[4,8,6,4,9]  
+ghci> map (++ "!") ["BIFF", "BANG", "POW"]  
+["BIFF!","BANG!","POW!"]  
+ghci> map (replicate 3) [3..6]  
+[[3,3,3],[4,4,4],[5,5,5],[6,6,6]]  
+
+
+ghci> filter (>3) [1,5,3,2,1,6,4,3,2,1]  
+[5,6,4]  
+ghci> filter (==3) [1,2,3,4,5]  
+[3]  
+ghci> filter even [1..10]  
+[2,4,6,8,10] 
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+Lambdas
+
+
+Lambdas are basically anonymous functions that are used because we need some functions only once. 
+
+    numLongChains :: Int  
+    numLongChains = length (filter (\xs -> length xs > 15) (map chain [1..100]))  
+
+
+map (+3) [1,6,3,2] and map (\x -> x + 3) [1,6,3,2] are equivalent since both (+3) and (\x -> x + 3) are functions that take a number and add 3 to it.
+
+
+Like normal functions, lambdas can take any number of parameters:
+
+ghci> zipWith (\a b -> (a * 30 + 3) / b) [5,4,3,2,1] [1,2,3,4,5]  
+[153.0,61.5,31.0,15.75,6.6] 
+
+
+Lambdas are normally surrounded by parentheses unless we mean for them to extend all the way to the right. Here's something interesting: due to the way functions are curried by default, these two are equivalent:
+
+    addThree :: (Num a) => a -> a -> a -> a  
+    addThree x y z = x + y + z  
+
+    addThree :: (Num a) => a -> a -> a -> a  
+    addThree = \x -> \y -> \z -> x + y + z  
+
+
+------------------------------------------------------------------------------------------------------------------
+
+Input / Output
+
+
+While functions being unable to change state is good because it helps us reason about our programs, there's one problem with that. If a function can't change anything in the world, how is it supposed to tell us what it calculated? In order to tell us what it calculated, it has to change the state of an output device (usually the state of the screen), which then emits photons that travel to our brain and change the state of our mind, man.
+
+main = putStrLn "hello, world"
+
+
+ghci> :t putStrLn  
+putStrLn :: String -> IO ()  
+ghci> :t putStrLn "hello, world"  
+putStrLn "hello, world" :: IO () 
+
+
+We can read the type of putStrLn like this: putStrLn takes a string and returns an I/O action that has a result type of () (i.e. the empty tuple, also know as unit). An I/O action is something that, when performed, will carry out an action with a side-effect (that's usually either reading from the input or printing stuff to the screen) and will also contain some kind of return value inside it. Printing a string to the terminal doesn't really have any kind of meaningful return value, so a dummy value of () is used.
+
+
+The empty tuple is a value of () and it also has a type of ().
+
+
+So, when will an I/O action be performed? Well, this is where main comes in. An I/O action will be performed when we give it a name of main and then run our program.
+
+main = do  
+    putStrLn "Hello, what's your name?"  
+    name <- getLine  
+    putStrLn ("Hey " ++ name ++ ", you rock!") 
+
+
+Because of that, main always has a type signature of main :: IO something, where something is some concrete type. By convention, we don't usually specify a type declaration for main.
+
+
+
+    ghci> :t getLine  
+    getLine :: IO String  
+
+
+main = do  
+    foo <- putStrLn "Hello, what's your name?"  
+    name <- getLine  
+    putStrLn ("Hey " ++ name ++ ", you rock!")
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Single assignment
+
+Any assignment that changes an existing value (e.g. x := x + 1) is disallowed in purely functional languages.
+
+In functional programming, assignment is discouraged in favor of single assignment, also called initialization.
+
+Single assignment is an example of name binding and differs from assignment as described in this article in that it can only be done once, usually when the variable is created; no subsequent reassignment is allowed.
+
+In Haskell,[8] there is no variable assignment; but operations similar to assignment (like assigning to a field of an array or a field of a mutable data structure) usually evaluate to the unit type, which is represented as ()
+
+ This type has only one possible value, therefore containing no information. It is typically the type of an expression that is evaluated purely for its side effects.
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+

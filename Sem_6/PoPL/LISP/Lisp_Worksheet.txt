@@ -1,0 +1,276 @@
+
+
+The interchangeability of code and data gives Lisp its instantly recognizable syntax. All program code is written as s-expressions, or parenthesized lists.
+
+
+Prefix expressions, lazy evaluation, not pure, allows mutable variables
+General Arithmetics, Variable and Types
+
+* (+ 3 2)
+
+
+(setq x 10)
+(print (type-of x))
+(INTEGER 0 4611686018427387903) 
+
+-----------------------------------------------------------------------------------------------------
+
+arrays
+
+clisp Scheme_Lisp_Programs/arrays.lisp
+
+
+
+-----------------------------------------------------------------------------------------------------------
+Sequences:
+
+
+Sequence is an abstract data type in LISP. Vectors and lists are the two concrete subtypes of this
+data type. All the functionalities defined on sequence data type are actually applied on all vectors
+and list types.
+
+
+------------------------------------------------------------------
+
+Lists
+
+
+Manipulating functions
+
+(write (car '(a b c d e f)))
+(terpri)
+(write (cdr '(a b c d e f)))
+(terpri)
+(write (cons 'a '(b c)))
+(terpri)
+(write (list 'a '(b c) '(e f)))
+(terpri)
+(write (append '(b c) '(e f) '(p q) '() '(g)))
+(terpri)
+(write (last '(a b c d (e f))))
+(terpri)
+(write (reverse '(a b c d (e f))))
+
+
+
+
+-----------------------------------------------------------------------------------------------------------
+
+Functions and lambdas
+
+(defun name (parameter-list)
+"Optional documentation string."
+body)
+
+
+(defun averagenum (n1 n2 n3 n4)
+(/ ( + n1 n2 n3 n4) 4))
+(write(averagenum 10 20 30 40))
+
+
+(defun area-circle(rad)
+"Calculates area of a circle with given radius"
+(terpri)
+(format t "Radius: ~5f" rad)
+(format t "~%Area: ~10f" (* 3.141592 rad rad)))
+(area-circle 10)
+
+
+
+Optional parameters
+
+
+(defun show-members (a b &optional c d) (write (list a b c d)))
+(show-members 1 2 3)
+
+(terpri)
+(show-members 'a 'b 'c 'd)
+(terpri)
+(show-members 'a 'b)
+(terpri)
+(show-members 1 2 3 4)
+
+Output:
+
+(1 2 3 NIL)
+(A B C D)
+(A B NIL NIL)
+(1 2 3 4)
+
+
+Rest parameters
+
+(defun show-members (a b &rest values) (write (list a b values)))
+(show-members 1 2 3)
+(terpri)
+(show-members 'a 'b 'c 'd)
+(terpri)
+(show-members 'a 'b)
+(terpri)
+(show-members 1 2 3 4)
+(terpri)
+(show-members 1 2 3 4 5 6 7 8 9)
+
+
+(1 2 (3))
+(A B (C D))
+(A B NIL)
+(1 2 (3 4))
+(1 2 (3 4 5 6 7 8 9))
+
+
+Lambdas
+
+(write ((lambda (a b c x)
+(+ (* a (* x x)) (* b x) c))
+4 2 9 3))
+
+51
+
+
+Map Functions
+
+
+(defun cubeMylist(lst)
+(mapcar #'(lambda(x) (* x x x)) lst))
+(write (cubeMylist '(2 3 4 5 6 7 8 9)))
+(8 27 64 125 216 343 512 729)
+
+
+
+(write (mapcar '+ '(1 3 5 7 9 11 13) '( 2 4 6 8)))
+(3 7 11 15)
+
+
+
+
+
+
+(write (mapcar '1+
+'(23 34 45 56 67 78 89)))
+
+---------------------------------------------------------------------------------------------------------
+
+
+Predicates
+
+Predicates are functions that test their arguments for some specific conditions and
+returns nil if the condition is false, or some non-nil value if the condition is true.
+
+(write (atom 'abcd))
+(terpri)
+(write (equal 'a 'b))
+(terpri)
+(write (evenp 10))
+(terpri)
+(write (evenp 7 ))
+(terpri)
+(write (oddp 7 ))
+(terpri)
+(write (zerop 0.0000000001))
+(terpri)
+(write (eq 3 3.0 ))
+(terpri)
+(write (equal 3 3.0 ))
+(terpri)
+(write (null nil ))
+
+
+T
+NIL
+T
+NIL
+T
+NIL
+NIL
+NIL
+T
+
+
+---------------------------------------------------------------------------------------------------
+
+
+(defun factorial (num)
+(cond ((zerop num) 1)
+(t ( * num (factorial (- num 1))))))
+(setq n 6)
+(format t "~% Factorial ~d is: ~d" n (factorial n))
+
+
+Factorial 6 is: 720
+-----------------------------------------------------------------------------------------------------------
+
+
+Strings
+
+; case-sensitive comparison
+(write (string= "this is test" "This is test"))
+(terpri)
+(write (string> "this is test" "This is test"))
+(terpri)
+(write (string< "this is test" "This is test"))
+(terpri)
+;case-insensitive comparision
+(write (string-equal "this is test" "This is test"))
+(terpri)
+(write (string-greaterp "this is test" "This is test"))
+(terpri)
+(write (string-lessp "this is test" "This is test"))
+(terpri)
+;checking non-equal
+(write (string/= "this is test" "this is Test"))
+(terpri)
+(write (string-not-equal "this is test" "This is test"))
+(terpri)
+(write (string/= "lisp" "lisping"))
+(terpri)
+(write (string/= "decent" "decency"))
+
+
+
+NIL
+0
+NIL
+T
+NIL
+NIL
+8
+NIL
+4
+5
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Input Output
+
+; the function AreaOfCircle
+; calculates area of a circle
+; when the radius is input from keyboard
+(defun AreaOfCircle()
+(terpri)
+(princ "Enter Radius: ")
+(setq radius (read))
+(setq area (* 3.1416 radius radius))
+(princ "Area: ")
+(write area))
+(AreaOfCircle)
+
+
+
+
+; this program inputs a numbers and doubles it
+(defun DoubleNumber()
+(terpri)
+(princ "Enter Number : ")
+(setq n1 (read))
+(setq doubled (* 2.0 n1))
+(princ "The Number: ")
+(write n1)
+(terpri)
+(princ "The Number Doubled: ")
+(write doubled)
+)
+(DoubleNumber)
+
+
