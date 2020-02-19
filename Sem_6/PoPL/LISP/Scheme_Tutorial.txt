@@ -123,7 +123,7 @@ different return types allowed, due to dynamically typed
 
 AND  OR Expressions:
 
-          (and (= 2 2) (> 2 1))                   =>  #t
+          (and (= 2 2) (> 2 1))                   =>  #t2
           (and (= 2 2) (< 2 1))                   =>  #f
           (and 1 2 'c '(f g))                     =>  (f g)
           (and)                                   =>  #t
