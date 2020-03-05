@@ -58,6 +58,7 @@ void parseHeader(char *header, int *port, char *host, char *toMod, int *size)
 	char replace[MAXLINE]; // the string to be replaced with path
 	char *loc; // Pointer to the start of replace string
 	strncpy(temp, header, *size);
+	temp[*size] = '\0';
 
 	// The main command
 	char *command = strtok(header,"\r\n");
@@ -83,6 +84,7 @@ void parseHeader(char *header, int *port, char *host, char *toMod, int *size)
 		printf("Host: %.*s, ", Ncolon - colon-1, colon+1); 
 		printf("Port: %d, ", atoi(Ncolon + 1));
 		strncpy(host, colon+1, Ncolon - colon-1);
+		host[Ncolon - colon-1] = '\0';
 		*port = atoi(Ncolon + 1);
 	}
 
@@ -403,6 +405,7 @@ int main(int argc, char* argv[])
 									// When the request is not a GET POST request.
 									char te[6];
 									strncpy(te, DUMMY, 5);
+									te[6] = '\0';
 									if(strstr(te, "GET") == NULL && strstr(te, "POST") == NULL)
 									{
 										printf("Not a GET / POST request. Dropping connection.\n");
@@ -456,6 +459,7 @@ int main(int argc, char* argv[])
 									// When the request is not a GET POST request. Just drop the request.
 									char te[6];
 									strncpy(te, DUMMY, 5);
+									te[6] = '\0';
 									if(strstr(te, "GET") == NULL && strstr(te, "POST") == NULL)
 									{
 										printf("Not a GET / POST request. Dropping Request.\n");
