@@ -1,0 +1,67 @@
+A) AVERAGE TRANSMISSIONS
+
+Word Used - Supercalifragilisticexpialidocious (34 Letters) 
+
+|-----------------------------------------------------|
+|  DROP PROBABILITY  | AVERAGE NUMBER OF TRANSMISSIONS|
+|                    |          PER LETTER            |
+|--------------------|--------------------------------|
+|   0.05             |       1                        |
+|   0.10             |      1.24                      |
+|   0.15             |      1.47                      |
+|   0.20             |      1.76                      |
+|   0.25             |      1.94                      |
+|   0.30             |      2.06                      |
+|   0.35             |      2.26                      |
+|   0.40             |      2.50                      |
+|   0.45             |      2.76                      |
+|   0.50             |      3.67                      |
+|-----------------------------------------------------|
+
+
+B) TYPES OF MESSAGE
+
+i)   Send Packet            - The packet that is actually sent across the network
+ii)  Receive Packet         - The packet where the actual message is stored to be delivered to the end user 
+iii) Unacknowledged packets - Send packets along with time stamps to check for ACKs
+
+
+C) ALL DATA STRUCTURES
+
+i) data (structure for storing the actual message)
+a. int msg_len - to store the length of the message
+b. void *msg - pointer to the message(character array)
+
+ii) sendPacket (structure for storing sending packets)
+a. struct sockaddr_in to - address to which message has to be sent
+b. Int type - Whether it is an ACK or APP message
+c. int seq_id - sequence numbers used to ensure reliability 
+d. struct data d - to store the message of the packet
+
+iii) recvPacket (structure for storing received packets)
+a. struct sockaddr_in from - address from which message has been received
+b. struct data d - to store the message of the packet
+
+iv) unAckPacket (structure for element of unAck table)
+a. time_t t - to detect time out
+b. struct sendPacket p - The send packet that is waiting to be acknowledged
+
+v) sendBuffer (structure for a circular buffer of sending packets)
+a. Int front - to denote the front of the array
+b. Int end - to denote the end of the array
+c. int size - to store the current size of the array
+d. struct sendPacket **p - pointer to the array (buffer)
+
+vi) recvBuffer (structure for a circular buffer of receiving packets)
+a. Int front - to denote the front of the array
+b. Int end - to denote the end of the array
+c. int size - to store the current size of the array
+d. struct recvPacket **p - pointer to the array (buffer)
+
+vii) unAckTable (structure for storing unacknowledged packets)
+a. int size - to store the size of the array
+b. Struct unAckPacket **p - pointer to the array where the unAck packets are stored
+
+viii) recvIDs (A table to maintain the packet IDs received)
+a. int size - number of IDs received
+b. Int *IDs - pointer to the array of IDs corresponding to the sequence number received
