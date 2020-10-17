@@ -1,0 +1,15 @@
+Name:- Kousshik Raj M
+Roll No.:- 17CS30022
+
+-Problem 1
+  -Language: C++ 11
+  -Extend the stack size:- `ulimit -s 16384`
+  -Compile the program:- `g++ gen_centrality.cpp -std=c++11`
+  -Execute the program:- `./a.out`
+  -Time taken for execution:- Approx. 9 mins
+
+-Problem 2
+  -Language: Python 3.7
+  -Install SNAP:- `pip install snap-stanford`
+  -Run the program:- `python analyze_centrality.py`
+  -Time taken:- Approx. 1 min

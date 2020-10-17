@@ -1,0 +1,3 @@
+a) The number of records: 1435
+b) The number of records in both files: 62839
+c) The repository that has the most failed API calls in assignment_2 is asmagin/sitecore-foundation-codegeneration-composition (5)

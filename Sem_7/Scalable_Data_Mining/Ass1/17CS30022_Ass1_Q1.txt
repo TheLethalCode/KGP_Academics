@@ -1,0 +1,8 @@
+a) The number of lines in the RDD: 9669739
+b) The number of WARN messages: 132158
+c) Number of different repositories processed when retrieval stage is api_client: 71981
+d) i) Client with most http/https requests is ghtorrent-13(85528)
+d) ii) Client with most failed http/https requests is ghtorrent-13(79623)
+e) i) The most active hour is 10 (2662487)
+e) ii) The most active repo is greatfakeman/Tabchi (79524)
+f) The most failed access key is ac6168f8776 (79623)

@@ -1,0 +1,2 @@
+b) Number of different repositories accessed by the client ghtorrent-22 (without inverted index): 4601
+c) Number of different repositories accessed by the client ghtorrent-22 (with inverted index): 4601

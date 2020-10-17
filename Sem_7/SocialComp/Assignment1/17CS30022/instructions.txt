@@ -1,0 +1,16 @@
+Name:- Kousshik Raj
+Roll No:- 17CS30022
+
+Language:- python
+Python Version:- 3.7
+Modules Required:- Numpy, SNAP
+Module Installation Commands:- pip install numpy snap-stanford
+Running Time:- 2 min approx. for each suubgraph
+
+Instruction to run the code:-
+- python gen_structure.py <subgraph_name>
+- the subpgraph passed as argument should be present in the subgraphs folder (relative path: subgraphs/<subgraph_name>)
+
+Output:-
+- Some outputs that use random generator might be different, as I used a method that uses a random number to calculate the maximum degree, thus shifting the random sequence laterally.
+- Because of this automated checker might give a mismatch.
