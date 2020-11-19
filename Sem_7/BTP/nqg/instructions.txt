@@ -1,0 +1,47 @@
+# Details
+# Implemented Wassertain Distance and incorporated it with NQG+ model
+# Line 287-298
+# Line 105-116
+# Code taken from https://github.com/magic282/NQG
+# Change eval per batch accordingly for low resource language
+
+export NQG_HOME=$(pwd)
+# English
+
+python code/seq2seq_pt/CollectVocab.py \
+       data/eng/train/train.source.txt \
+       data/eng/train/train.target.txt \
+       data/eng/train/vocab.txt
+
+python code/seq2seq_pt/CollectVocab.py \
+       data/eng/train/train.bio.txt \
+       data/eng/train/bio.vocab.txt
+
+python code/seq2seq_pt/CollectVocab.py \
+       data/eng/train/train.pos.txt \
+       data/eng/train/train.ner.txt \
+       data/eng/train/train.case.txt \
+       data/eng/train/feat.vocab.txt
+
+head -n 20000 data/eng/train/vocab.txt > data/eng/train/vocab.txt.20k
+bash code/seq2seq_pt/run_squad_qg.sh $NQG_HOME/data/eng/ $NQG_HOME/code/seq2seq_pt
+
+# Bengali
+
+python code/seq2seq_pt/CollectVocab.py \
+       data/ben/train/train.source.txt \
+       data/ben/train/train.target.txt \
+       data/ben/train/vocab.txt
+
+python code/seq2seq_pt/CollectVocab.py \
+       data/ben/train/train.bio.txt \
+       data/ben/train/bio.vocab.txt
+
+python code/seq2seq_pt/CollectVocab.py \
+       data/ben/train/train.pos.txt \
+       data/ben/train/train.ner.txt \
+       data/ben/train/train.case.txt \
+       data/ben/train/feat.vocab.txt
+
+head -n 20000 data/ben/train/vocab.txt > data/ben/train/vocab.txt.20k
+bash code/seq2seq_pt/run_squad_qg.sh $NQG_HOME/data/ben/ $NQG_HOME/code/seq2seq_pt

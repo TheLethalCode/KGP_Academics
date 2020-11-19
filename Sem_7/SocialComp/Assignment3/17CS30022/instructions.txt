@@ -1,0 +1,29 @@
+Name:- Kousshik Raj
+Roll No:- 17CS30022
+
+Task #1
+
+Language :- Python 3.7
+Libraries Used :- Numpy, Scikit-Learn, SpaCy, FastText
+Install Libraries :- `pip install numpy sklearn spacy fasttext`
+Download learned embeddings :- `python -m spacy download en_core_web_md`
+Run the program (from task1 directory):- `python main.py`
+Time taken :- Approx. 8 minutes
+
+Task #2
+
+Source:-        The code for this task was written entirely by me. 
+About Model :-  First, the data is preprocessed by removing mentions, punctuations, converting to lower cases, and then lemmatizing using SpaCy.
+                Then, the tweets are vectorised using TF-IDF algorithm while ignoring words occuring more than 80% and less than 5.
+                Finally, this is trained over a SVM with RBF kernel.
+
+Language :- Python 3.7
+Libraries Used :- Numpy, Scikit-Learn, SpaCy
+Install Libraries :- `pip install numpy sklearn spacy`
+Download learned embeddings (800 MB):- `python -m spacy download en_core_web_lg`
+Run the program (from task2 directory):- `python main.py`
+Time taken :- Approx. 58 minutes (The model takes a lot of time because the running time scales quadratically wrt input size)
+
+Validation:-    During cross validation, with a 3:1 train-test split, this model achieved a F1 score of 0.82 
+Validation verification:- Comment: line 95, 89. Uncomment: line 88, 94 
+                    (To verify cross validation F1 score. This runs in approx. 15 mins)
