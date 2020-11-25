@@ -292,7 +292,7 @@ def trainModel(model, translator, trainData, validData, dataset, optim):
             maxval = torch.max(cosine_cost)
             threshold = minval + _beta * (maxval - minval)
             cosine_cost = nn.ReLU()(cosine_cost - threshold)
-
+            
             b, n, m = list(cosine_cost.shape)
             OT_loss = torch.mean(IPOT_distance2(cosine_cost, b, n, m))
             loss = loss + OT_loss
