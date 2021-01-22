@@ -1,0 +1,29 @@
+# Details
+# Implemented Wassertain Distance and incorporated it with NQG+ model
+# Line 287-298
+# Line 105-116
+# Code taken from https://github.com/magic282/NQG
+# Change eval per batch accordingly for low resource language
+
+export NQG_HOME=$(pwd)
+export LANG="eng"
+# English
+
+python code/seq2seq_pt/CollectVocab.py \
+       data/${LANG}/train/train.source.txt \
+       data/${LANG}/train/train.target.txt \
+       data/${LANG}/train/vocab.txt
+
+python code/seq2seq_pt/CollectVocab.py \
+       data/${LANG}/train/train.bio.txt \
+       data/${LANG}/train/bio.vocab.txt
+
+python code/seq2seq_pt/CollectVocab.py \
+       data/${LANG}/train/train.pos.txt \
+       data/${LANG}/train/train.ner.txt \
+       data/${LANG}/train/train.case.txt \
+       data/${LANG}/train/feat.vocab.txt
+
+head -n 20000 data/${LANG}/train/vocab.txt > data/${LANG}/train/vocab.txt.20k
+bash code/seq2seq_pt/run_squad_qg.sh $NQG_HOME/data/${LANG} $NQG_HOME/code/seq2seq_pt
+
