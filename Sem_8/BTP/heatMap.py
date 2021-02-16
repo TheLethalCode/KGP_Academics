@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 # sphinx_gallery_thumbnail_number = 2
 
-PATH = "Attn_matrix_1.txt"
+PATH = "Attn_matrix.txt"
 
 if __name__ == '__main__':
 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     # attn = attn[predInd, srcInd]
 
     fig, ax = plt.subplots()
-    im = ax.imshow(attn, cmap=plt.cm.Oranges, vmax = 0.01)
+    im = ax.imshow(attn, cmap=plt.cm.Greys, vmax = 0.9)
 
     ax.set_xticks(np.arange(len(src)))
     ax.set_yticks(np.arange(len(pred)))
