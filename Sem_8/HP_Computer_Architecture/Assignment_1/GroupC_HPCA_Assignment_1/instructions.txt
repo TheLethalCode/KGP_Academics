@@ -1,13 +1,14 @@
 GROUP C - Instructions
 
-1) The program assigned for simulation to our group is "qsort4.c". It has been compiled and made it into a executable file "qsort".
+1) The  benchmark program assigned for simulation to our group is "qsort4.c". It has been compiled and made it into a executable file "qsort4".
 
+Note :- Custom config script tested on gem5 v20.1.0.4, v20.1.0.5. The script crashes on v21.0.0.0
 2) To run the custom config script for the top 10 configurations, do the following :-
-    - Download the submission
+    - Download the submission and unzip it.
     - In the terminal, `cd` into the folder of the submission
     - Run the following command:- `export CODE=$(pwd)`
-    - Then, goto the gem5 root directory in the terminal
-    - Run the following command:- `build/X86/gem5.opt ${CODE}/customConfig.py --cmd=${CODE}/qsort --rank=1`
+    - Then, goto the gem5 root directory in the same terminal from which you entered the above command
+    - Run the following command:- `build/X86/gem5.opt ${CODE}/customConfig.py --cmd=${CODE}/qsort4 --rank=1`
     - Change the value of the rank argument from 1 to 10 to run the simulation for all the top 10 configurations
     - The output is stored in m5out folder present in the gem5 root directory 
 
