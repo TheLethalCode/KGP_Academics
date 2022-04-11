@@ -1,0 +1,163 @@
+
+/*-----------------------------------------------------------------------------------
+
+    Template Name: Spark Event Template 
+    Template URI: http://bootexperts.com
+    Description: This is html5 template
+    Author: BootExperts
+    Author URI: http://bootexperts.com
+    Version: 1.0
+
+-----------------------------------------------------------------------------------*/
+
+a:hover {
+    color: #607d8b;
+}
+.header-top a:hover {
+  color: #607d8b;
+}
+
+/* main menu */
+.main-menu ul li a:hover {
+  color: #607d8b;
+}
+.main-menu li.current a {
+  color: #607d8b;
+}
+/* slider */
+a.btn-def:hover {
+  border: 1px solid #607d8b;
+  background:#607d8b;
+}
+a.btn-def.bnt-2:hover {
+  border: 1px solid #607d8b;
+}
+.btn-def.bnt-3.red-color {
+    background: #607d8b none repeat scroll 0 0;
+    border-color: #607d8b;
+}
+.btn-def.bnt-3.red-color:hover {
+    color: #607d8b;
+}
+
+/* end btn style */
+.down-arrow a:hover {
+  border: 1px solid #607d8b;
+  background:#607d8b
+}
+.tab-menu-list li.active a, .tab-menu-list li:hover a {
+  background: #607d8b none repeat scroll 0 0;
+  color: #fff;
+  border-color: #607d8b;
+}
+/* speaker section */
+.social-icon li a:hover {
+  background: #607d8b none repeat scroll 0 0;
+  border: 1px solid #607d8b;
+}
+.crasoule-btn .owl-controls .owl-buttons div:hover {
+  border: 2px solid #607d8b;
+  color: #607d8b;
+}
+.uc-event-title > a:hover {
+  color: #607d8b;
+}
+/*--------------------------------------  
+Full Width Video Area
+----------------------------------------*/
+.slider-pegi.owl-theme .owl-controls .owl-page.active span,.slider-pegi.owl-theme .owl-controls .owl-page:hover span {
+  background: #607d8b none repeat scroll 0 0;
+  border-color:#607d8b;
+}
+.news-bottom a:hover {
+    color: #607d8b;
+}
+.send-btn {
+    color: #607d8b;
+}
+.send-btn:hover {
+    background: #607d8b;
+    border-color:#607d8b;
+}
+/* footer area */
+.social-area li a:hover {
+  color: #607d8b;
+}
+/* ===========Home-02================ */
+.search-account i:hover {
+  color: #607d8b;
+}
+/* slider */
+.map-content .slider-form .input-box input.submit {
+  background: #607d8b none repeat scroll 0 0;
+  border: 1px solid #607d8b;
+}
+.map-content .slider-form .input-box input.submit:hover {
+  color: #607d8b;
+}
+.social-icon-2 li a:hover {
+  color: #607d8b;
+}
+/* total feed */
+.post-by a:hover {
+    color: #607d8b;
+}
+.breadcrumb a:hover {
+  color:#607d8b;
+}
+.breadcrumb::after {
+    background: #607d8b none repeat scroll 0 0;
+}
+.search-btn:hover {
+    color: #607d8b;
+}
+/* single-blog */
+.blog-meta li a:hover {
+    color: #607d8b;
+}
+blockquote {
+  border-left: 5px solid #607d8b;
+
+}
+.single-blog-social li a:hover {
+  color: #607d8b;
+}
+/* comments */
+.post-comment input.submit:hover {
+  color: #607d8b;
+}
+/* event  shedule area */
+.shedule-head h4:hover {
+  color: #607d8b;
+}
+.mean-container .mean-nav ul li a:hover {
+  color: #607d8b;
+}
+/*----------------------------------------*/
+/*  31. Scroll UP
+/*----------------------------------------*/
+#scrollUp {
+    background: #607d8b none repeat scroll 0 0;
+}
+#scrollUp:hover {
+    border-color: #607d8b;
+    color: #607d8b;
+}
+
+.social-icon-2 li a:hover {
+  background: inherit;
+  border: medium none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

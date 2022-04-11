@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="306dp"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/eventId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Event ID : "
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/eventName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/eventId"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Event Name :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/eventDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/eventName"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Description :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/eventRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/eventDesc"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Venue :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/eventDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/eventRoom"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Date : "
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/eventTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/eventDate"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Time :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/eventStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/eventTime"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Event Status : "
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+        <Button
+            android:id="@+id/eventDelete"
+            android:layout_width="125dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/eventStatus"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorAccent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Delete Event"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/eventDelete"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/listDivider" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

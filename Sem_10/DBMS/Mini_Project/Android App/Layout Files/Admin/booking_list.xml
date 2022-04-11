@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Up.AI"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/eventId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="1"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+         />
+
+        <TextView
+            android:id="@+id/roomNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/eventId"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="V1"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textColor="#000000" />
+        <TextView
+            android:id="@+id/building"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/roomNo"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Vikramshila"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+             />
+        <Button
+            android:id="@+id/buttonAuth"
+            android:layout_width="125dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/name"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Authenticate"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</LinearLayout>

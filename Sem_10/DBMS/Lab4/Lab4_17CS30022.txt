@@ -1,0 +1,121 @@
+------ NAME: Kousshik Raj
+------ Roll No.: 17CS30022
+------ Set Nos. : A, C, D, E, G, I, J, L, N, O
+------ Q. No. : 2
+
+-------- 1) Set A. Q2 -------
+
+SELECT R.RNo, R.RName, F.FId, U.FName, C.CId, C.CName
+FROM RegUser as U, Faculty as F, Course as C, RegUser as R, CourseReg as CR
+WHERE (U.RNo = F.FId AND F.FId = C.FId) AND 
+        (R.RNo = CR.RNo AND CR.CId = C.CId) AND
+                    (R.HighestQual = "MTECH");
+
+-------- 2) Set C. Q2 -------
+---- Lists all course each student has enrolled that has no prerequisites
+
+SELECT R.RNo, R.RName, X.CId, X.CName
+FROM RegUser as R, CourseReg as CR, (
+    SELECT C.CId as CId, C.CName as CName
+    FROM (Course as C LEFT JOIN Prerequisite as P ON C.CId = P.CId)  
+    GROUP BY Id, Name
+    HAVING SUM(case when P.PreqCId is not null 1 else 0) = 0
+) as X
+WHERE R.RNo = CR.RNo AND CR.CId = X.CId;
+
+
+-------- 3) Set D. Q2 -------
+
+SELECT C.CId, C.CName, C.CDuration, X.FId, X.FName, X.FDept, X.ResArea, X.HQual
+FROM Course as C, (SELECT F.FId as FId, F.FName as FName, F.FDept as FDept, F.ResearchArea as ResArea, R.HighestQual as HQual, 
+    FROM RegUser as R, Faculty as F, Course as C
+    WHERE (R.RNo = F.FId AND C.FId = F.FId) AND 
+        (F.ResearchArea = "ALGO" AND F.FDept = "EE") AND 
+                                (R.HighestQual = "MTECH")) as X 
+WHERE C.FId = X.FId AND C.CDuration = "LONG";
+
+-------- 4) Set E. Q2 -------
+
+SELECT R.RNo, R.RName
+FROM RegUser as R, CourseReg as CR
+WHERE R.RNo = CR.RNo
+GROUP BY R.RNo, R.RName
+HAVING COUNT(*) = 1;
+
+-------- 5) Set G. Q2 -------
+
+SELECT F.FId, F.FDept, C.CId, C.CName, C.CDept
+FROM Faculty as F, Course as C, (SELECT F.FId as FId
+    FROM Faculty as F, Course as C
+    WHERE F.FId = C.FId AND C.CDuration = "SHORT"
+    GROUP BY F.FId
+    HAVING COUNT(*) <= 3) as X
+WHERE F.FId = C.FId AND F.FId = X.FId;
+
+
+-------- 6) Set I. Q2 -------
+---- All the medium duration courses taught by the required faculty are listed
+
+SELECT R.RNo, R.RName, R.ROccu, R.HighestQual, F.FDept, F.ResearchArea, C.CId, C.CName, C.CDuration
+FROM RegUser as R, Faculty as F, Course as C
+WHERE (R.RNo = F.FId AND C.FId = F.FId) AND 
+    (F.ResearchArea = "DBMS" OR F. ResearchArea = "AI") AND 
+    (R.HighestQual = "PHD" AND F.FDept = "ECE" AND C.CDuration = "MEDIUM");
+
+-------- 7) Set J. Q2 -------
+----- Listing only those students having less than 80 marks in exactly three different departments
+----- Assuming the final restriction is only for the faculties and listing only students
+----- with courses in 3 departments and have less than 80 marks
+
+SELECT R.RNo, R.RName, R.HighestQual, C.CId, C.CName, C.CDept, CR.Score, F.FId, F.ResearchArea, F.FDept
+FROM RegUser as R, Course as C, Faculty as F, CourseReg as CR, 
+    (SELECT R.RNo as RNo                                                    -- Table of students with such subjects from exactly 3 different deps and having marks less than 80
+    FROM RegUser as R, CourseReg as CR, 
+        (SELECT C.CId as CId, C.CName as CName, C.CDept as CDept            -- List the courses with required condition
+        FROM Faculty as F, Course as C
+        WHERE C.FId = F.FId AND F.ResearchArea = "ALGO" AND 
+                            (F.FDept = "CS" OR F.FDept = "EC")) as X
+    WHERE R.RNo = CR.RNo AND CR.CId = X.CId AND CR.Score < 80
+    GROUP BY R.RNo
+    HAVING COUNT(DISTINCT X.CDept) = 3) as Y
+WHERE R.RNo = Y.RNo AND C.CId = CR.CId AND CR.RNo = R.RNo AND F.FId = C.FId
+        AND F.ResearchArea = "ALGO" AND (F.FDept = "CS" OR F.FDept = "EC") AND CR.Score < 80;
+
+
+
+-------- 8) Set L. Q2 -------
+------ Assuming that the faculties to be listed teach at most one course from the 
+------ conjunctions of the said restrictions and no restrictions on courses which don't 
+------ satisfy the above condition. For eg:-, even if faculties teach more than 1 course from
+------ CSE that has exactly 1 prereq but it is a short course, he can still be listed if he satifies
+------ the condition
+
+SELECT F.FId, F.Name
+FROM (Faculty as F                                          -- After Left join we have all faculties and corresponding restricted courses they teach, if any.
+    LEFT JOIN (Course as C                                  -- After Inner join we have all courses that satisfy all the condition
+        INNER JOIN (SELECT C.CId as CId
+            FROM Course as C, Prerequisite as P
+            WHERE C.CId = P.CId AND C.CDuration = "LONG" AND
+                            (C.CDept = "CS" OR C.CDept = "ME")
+            GROUP BY C.CId
+            HAVING COUNT(*) = 1) as X
+        ON C.CId = X.CId) as ResC
+    ON F.FId = ResC.C.FId)
+GROUP BY F.FId
+HAVING SUM(case when C.CId not null 1 else 0) <= 1;
+
+
+-------- 9) Set N. Q2 -------
+
+SELECT C.CId, C.CName, MAX(CR.Score) as HighestMarks
+FROM Faculty as F, Course as C, CourseReg as CR
+WHERE F.FId = C.FId AND CR.CId = C.CId AND
+        F.ResearchArea = "ALGO" AND C.CDept = "CS"
+GROUP BY C.CId, C.CName;
+
+-------- 10) Set O. Q2 -------
+
+SELECT C.CId, C.CName, MAX(CR.Score) / MIN(CR.Score) as ratio
+FROM Course as C, CourseReg as CR
+WHERE C.CId = CR.CId AND C.CDept = "EE"
+GROUP BY C.CId, C.CName;
